@@ -1,1 +1,1 @@
-##Algorithm Practice
+<h1>Algorithm Practice</h1>
