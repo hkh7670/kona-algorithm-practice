@@ -36,11 +36,11 @@ public class 한규호_1012 {
 
         for (int i = 0; i < testCase; i++) {
             int answer = 0;
-            m = tables.get(order)[0].length;
-            n = tables.get(order).length;
+            m = tables.get(order)[0].length; // 테스트 케이스 농장의 가로길이
+            n = tables.get(order).length; // 테스트 케이스 농장의 세로길이
             for (int x = 0; x < n; x++) {
                 for (int y = 0; y < m; y++) {
-                    if (tables.get(order)[x][y] == 1 && !visitedList.get(order)[x][y]) {
+                    if (tables.get(order)[x][y] == 1 && !visitedList.get(order)[x][y]) { // 배추가 있으면서 방문한 적 없는 위치인 경우?
                         dfs(x, y);
                         answer++;
                     }
@@ -56,12 +56,12 @@ public class 한규호_1012 {
     }
 
     static void dfs(int x, int y) {
-        visitedList.get(order)[x][y] = true;
-        for (int i = 0; i < 4; i++) {
+        visitedList.get(order)[x][y] = true; // 방문 흔적 남기기
+        for (int i = 0; i < 4; i++) { // 상, 하, 좌, 우의 인접한 부분에 방문한 적 없는 배추가 있는지 확인
             int nx = x + dx[i];
             int ny = y + dy[i];
-            if (ny >= 0 && ny < m && nx >= 0 && nx < n) {
-                if (tables.get(order)[nx][ny] == 1 && !visitedList.get(order)[nx][ny]) {
+            if (ny >= 0 && ny < m && nx >= 0 && nx < n) { // 농장의 범위를 벗어나지 않으면서
+                if (tables.get(order)[nx][ny] == 1 && !visitedList.get(order)[nx][ny]) { // 배추가 있고, 방문한 적 없으면?
                     dfs(nx, ny);
                 }
             }
