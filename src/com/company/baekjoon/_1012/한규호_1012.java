@@ -41,8 +41,8 @@ public class 한규호_1012 {
             for (int x = 0; x < n; x++) {
                 for (int y = 0; y < m; y++) {
                     if (tables.get(order)[x][y] == 1 && !visitedList.get(order)[x][y]) { // 배추가 있으면서 방문한 적 없는 위치인 경우?
-                        dfs(x, y);
-                        answer++;
+                        dfs(x, y); // 재귀함수로 인접 배추들을 전부 방문
+                        answer++; // 인접 배추들을 전부 방문했으면 (= 재귀함수가 종료됐으면) 카운트 상승
                     }
                 }
             }
