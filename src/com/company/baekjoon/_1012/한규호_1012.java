@@ -8,9 +8,9 @@ public class 한규호_1012 {
 
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
-    static int idx = 0;
     static int m;
     static int n;
+    static int idx;
     static List<Integer> answers = new ArrayList<>();
     static List<int[][]> tables = new ArrayList<>();
     static List<boolean[][]> visitedList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class 한규호_1012 {
         }
 
 
-        for (int i = 0; i < testCase; i++) {
+        for (idx = 0; idx < testCase; idx++) {
             int answer = 0;
             m = tables.get(idx)[0].length; // 테스트 케이스 농장의 가로길이
             n = tables.get(idx).length; // 테스트 케이스 농장의 세로길이
@@ -47,7 +47,6 @@ public class 한규호_1012 {
                 }
             }
             answers.add(answer);
-            idx++;
         }
         for (int answer : answers) {
             System.out.println(answer);
