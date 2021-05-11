@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class 한규호_1012 {
 
@@ -13,27 +12,25 @@ public class 한규호_1012 {
     static int m;
     static int n;
     static int idx;
-    static List<Integer> answers = new ArrayList<>();
     static List<int[][]> tables = new ArrayList<>();
     static List<boolean[][]> visitedList = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int testCase = Integer.parseInt(st.nextToken());
+        String space = " ";
+        int testCase = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < testCase; i++) {
-            st = new StringTokenizer(br.readLine());
-            int m = Integer.parseInt(st.nextToken());
-            int n = Integer.parseInt(st.nextToken());
-            int k = Integer.parseInt(st.nextToken());
+            String[] mnk = br.readLine().split(space);
+            int m = Integer.parseInt(mnk[0]);
+            int n = Integer.parseInt(mnk[1]);
+            int k = Integer.parseInt(mnk[2]);
             int[][] table = new int[n][m];
             boolean[][] visited = new boolean[n][m];
             for (int j = 0; j < k; j++) {
-                st = new StringTokenizer(br.readLine());
-                int y = Integer.parseInt(st.nextToken());
-                int x = Integer.parseInt(st.nextToken());
+                String[] yx = br.readLine().split(space);
+                int y = Integer.parseInt(yx[0]);
+                int x = Integer.parseInt(yx[1]);
                 table[x][y] = 1; // 배추는 1로 표시
             }
             tables.add(table);
@@ -52,9 +49,6 @@ public class 한규호_1012 {
                     }
                 }
             }
-            answers.add(answer);
-        }
-        for (int answer : answers) {
             System.out.println(answer);
         }
     }
