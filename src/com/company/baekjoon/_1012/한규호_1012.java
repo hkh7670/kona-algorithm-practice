@@ -1,8 +1,10 @@
 package com.company.baekjoon._1012;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class 한규호_1012 {
 
@@ -15,24 +17,28 @@ public class 한규호_1012 {
     static List<int[][]> tables = new ArrayList<>();
     static List<boolean[][]> visitedList = new ArrayList<>();
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int testCase = scanner.nextInt();
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int testCase = Integer.parseInt(st.nextToken());
+
         for (int i = 0; i < testCase; i++) {
-            int m = scanner.nextInt();
-            int n = scanner.nextInt();
-            int k = scanner.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int m = Integer.parseInt(st.nextToken());
+            int n = Integer.parseInt(st.nextToken());
+            int k = Integer.parseInt(st.nextToken());
             int[][] table = new int[n][m];
             boolean[][] visited = new boolean[n][m];
             for (int j = 0; j < k; j++) {
-                int y = scanner.nextInt();
-                int x = scanner.nextInt();
+                st = new StringTokenizer(br.readLine());
+                int y = Integer.parseInt(st.nextToken());
+                int x = Integer.parseInt(st.nextToken());
                 table[x][y] = 1; // 배추는 1로 표시
             }
             tables.add(table);
             visitedList.add(visited);
         }
-
 
         for (idx = 0; idx < testCase; idx++) {
             int answer = 0;
@@ -51,7 +57,6 @@ public class 한규호_1012 {
         for (int answer : answers) {
             System.out.println(answer);
         }
-        scanner.close();
     }
 
     static void dfs(int x, int y) {
