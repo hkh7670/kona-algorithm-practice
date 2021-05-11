@@ -1,11 +1,11 @@
-package com.study.algo;
+package com.company.baekjoon._1012;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_1012_유기농배추 {
+public class 송복민_Main_1012_유기농배추 {
 
 	static int T;
 	static int M, N, K;
