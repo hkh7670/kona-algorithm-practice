@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 송복민_Main_1012_유기농배추 {
+public class 송복민_1012 {
 
 	static int T;
 	static int M, N, K;
