@@ -1,8 +1,6 @@
 package com.company.baekjoon._1874;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -11,6 +9,7 @@ import java.util.stream.Collectors;
 public class 한규호_1874 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Integer> stack = new Stack<>();
         List<Integer> numbers = new ArrayList<>();
         List<String> operators = new ArrayList<>();
@@ -50,11 +49,13 @@ public class 한규호_1874 {
 
         if (isPossible) {
             for (String operator : operators) {
-                System.out.println(operator);
+                bw.write(operator + "\n");
+                bw.flush();
             }
         } else {
-            System.out.println("NO");
+            bw.write("NO");
+            bw.flush();
         }
-
+        bw.close();
     }
 }
