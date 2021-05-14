@@ -35,6 +35,7 @@ public class 한규호_1874 {
             if (pushIdx == n && !stack.peek().equals(numbers.get(popIdx))) { // 더 이상 push할 숫자가 없으면서 (= pop밖에 할 수 없으면서) 스택의 Top에 있는 값이 요구되는 숫자와 다를경우 -> 수열 생성 불가능
                 bw.write("NO");
                 bw.flush();
+                bw.close();
                 return;
             }
             if (!stack.empty()) { // 스택에 비어있지 않으면서
