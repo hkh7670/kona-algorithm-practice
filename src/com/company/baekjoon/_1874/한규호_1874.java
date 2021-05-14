@@ -10,12 +10,14 @@ public class 한규호_1874 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         Stack<Integer> stack = new Stack<>();
         List<Integer> numbers = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
 
-        String plus = "+";
-        String minus = "-";
+        char plus = '+';
+        char minus = '-';
+
         boolean isPossible = true;
         int popIdx = 0; // pop할 때 사용할 배열 인덱스
         int pushIdx = 0; // 오름차순으로 push할 때 사용할 배열 인덱스
