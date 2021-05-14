@@ -51,11 +51,10 @@ public class 한규호_1874 {
 
         if (isPossible) {
             bw.write(sb.toString());
-            bw.flush();
         } else {
             bw.write("NO");
-            bw.flush();
         }
+        bw.flush();
         bw.close();
     }
 }
