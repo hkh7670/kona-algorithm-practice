@@ -18,7 +18,6 @@ public class 한규호_1874 {
         char plus = '+';
         char minus = '-';
 
-        boolean isPossible = true;
         int popIdx = 0; // pop할 때 사용할 배열 인덱스
         int pushIdx = 0; // 오름차순으로 push할 때 사용할 배열 인덱스
         int n = Integer.parseInt(br.readLine());
@@ -34,8 +33,9 @@ public class 한규호_1874 {
 
         while (popIdx < n) {
             if (pushIdx == n && !stack.peek().equals(numbers.get(popIdx))) { // 더 이상 push할 숫자가 없으면서 (= pop밖에 할 수 없으면서) 스택의 Top에 있는 값이 요구되는 숫자와 다를경우 -> 수열 생성 불가능
-                isPossible = false;
-                break;
+                bw.write("NO");
+                bw.flush();
+                return;
             }
             if (!stack.empty()) { // 스택에 비어있지 않으면서
                 if (stack.peek().equals(numbers.get(popIdx))) { // 스택의 Top에 있는 값이 요구되는 숫자와 같을 경우 -> pop 하면서 '-' 연산자 추가
@@ -49,11 +49,7 @@ public class 한규호_1874 {
             sb.append(plus).append("\n"); // push 후 '+' 연산자 추가
         }
 
-        if (isPossible) {
-            bw.write(sb.toString());
-        } else {
-            bw.write("NO");
-        }
+        bw.write(sb.toString());
         bw.flush();
         bw.close();
     }
