@@ -12,7 +12,7 @@ public class 한규호_1874 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Integer> stack = new Stack<>();
         List<Integer> numbers = new ArrayList<>();
-        List<String> operators = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
 
         String plus = "+";
         String minus = "-";
@@ -39,19 +39,17 @@ public class 한규호_1874 {
                 if (stack.peek().equals(numbers.get(popIdx))) { // 스택의 Top에 있는 값이 요구되는 숫자와 같을 경우 -> pop 하면서 '-' 연산자 추가
                     stack.pop();
                     popIdx++;
-                    operators.add(minus);
+                    sb.append(minus).append("\n");
                     continue;
                 }
             }
             stack.push(sortedNumbers.get(pushIdx++)); // 위 두 조건에 해당 안되는 경우엔 stack에 오름차순으로 push
-            operators.add(plus); // push 후 '+' 연산자 추가
+            sb.append(plus).append("\n"); // push 후 '+' 연산자 추가
         }
 
         if (isPossible) {
-            for (String operator : operators) {
-                bw.write(operator + "\n");
-                bw.flush();
-            }
+            bw.write(sb.toString());
+            bw.flush();
         } else {
             bw.write("NO");
             bw.flush();
