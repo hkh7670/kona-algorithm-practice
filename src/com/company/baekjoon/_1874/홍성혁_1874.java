@@ -1,46 +1,48 @@
 package com.company.baekjoon._1874;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.OutputStreamWriter;
 import java.util.Stack;
 
 public class 홍성혁_1874 {
-
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		Stack<Integer> stack = new Stack<Integer>();
-				
+		Stack<Integer> stack = new Stack<>();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		ArrayList<Integer> list = new ArrayList<Integer>();		//입력받은 입력값 / 만들어야 하는 순열
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringBuilder sb = new StringBuilder();
 		
 		int n = Integer.parseInt(br.readLine());
-		int j = 0;	//입력받은 값의 idx
-		
+		int[] list = new int[n];
+		int j = 0;	
 		int number = 1;
 		String result = "";
 		for(int i=0 ; i<n ; i++) {
-			list.add(Integer.parseInt(br.readLine()));
+			list[i] = Integer.parseInt(br.readLine());
 		}
-		
+		br.close();
 		while(j<n) {
-			if(number == n+1 && !(stack.peek() == list.get(j))) {
-				System.out.println("NO");
+			if(number == n+1 && !(stack.peek().equals(list[j]))) {
+				bw.write("NO");
+                bw.flush();
+                bw.close();
 				return;
 			}
 			if(!stack.empty()) {
-				if(stack.peek() == list.get(j)) {
+				if(stack.peek().equals(list[j])) {
 					j++;
 					stack.pop();
-					result += "-\n";
+					sb.append("-\n");
 					continue;
 				}
 			}
-			stack.push(number);
-			number++;
-			result += "+\n";
+			stack.push(number++);
+			sb.append("+\n");
 		}
-		System.out.println(result);
+		bw.write(sb.toString());
+        bw.flush();
+        bw.close();
 	}
 
 }
