@@ -11,11 +11,13 @@ public class 한규호_1018 {
         char[] startWithBlackToChar = startWithBlack.toCharArray();
         String startWithWhite = "WBWBWBWB";
         char[] startWithWhiteToChar = startWithWhite.toCharArray();
+        int minCnt = 2500; // 다시 칠해야 하는 정사각형의 최소 개수
+        int chessWidth = 8; // 체스판의 가로 길이
+        int chessHeight = 8; // 체스판의 세로 길이
 
         String[] nm = br.readLine().split(" ");
         int n = Integer.parseInt(nm[0]);
         int m = Integer.parseInt(nm[1]);
-        int minCnt = 2500; // 다시 칠해야 하는 정사각형의 최소 개수
 
         char[][] board = new char[n][m];
 
@@ -27,10 +29,10 @@ public class 한규호_1018 {
             }
         }
 
-        for (int i = 0; i <= n - 8; i++) {
-            for (int j = 0; j <= m - 8; j++) {
-                int row = i + 8;
-                int col = j + 8;
+        for (int i = 0; i <= n - chessHeight; i++) {
+            for (int j = 0; j <= m - chessWidth; j++) {
+                int row = i + chessHeight;
+                int col = j + chessWidth;
                 int blackCaseCnt = 0;
                 int whiteCaseCnt = 0;
 
@@ -41,29 +43,14 @@ public class 한규호_1018 {
                 boolean blackToggle = true;
                 boolean whiteToggle = false;
 
-                // 좌측 최상단 : black
                 for (int r = i; r < row; r++) {
                     for (int c = j; c < col; c++) {
                         if (blackToggle) {
                             if (board[r][c] != startWithBlackToChar[c - j]) blackCaseCnt++;
+                            if (board[r][c] != startWithWhiteToChar[c - j]) whiteCaseCnt++;
                         } else if (whiteToggle) {
                             if (board[r][c] != startWithWhiteToChar[c - j]) blackCaseCnt++;
-                        }
-                    }
-                    blackToggle = !blackToggle;
-                    whiteToggle = !whiteToggle;
-                }
-
-                blackToggle = false;
-                whiteToggle = true;
-
-                // 좌측 최상단 : white
-                for (int r = i; r < row; r++) {
-                    for (int c = j; c < col; c++) {
-                        if (blackToggle) {
                             if (board[r][c] != startWithBlackToChar[c - j]) whiteCaseCnt++;
-                        } else if (whiteToggle) {
-                            if (board[r][c] != startWithWhiteToChar[c - j]) whiteCaseCnt++;
                         }
                     }
                     blackToggle = !blackToggle;
