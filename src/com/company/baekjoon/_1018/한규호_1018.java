@@ -48,7 +48,8 @@ public class 한규호_1018 {
                         if (blackToggle) {
                             if (board[r][c] != startWithBlackToChar[c - j]) blackCaseCnt++;
                             if (board[r][c] != startWithWhiteToChar[c - j]) whiteCaseCnt++;
-                        } else if (whiteToggle) {
+                        }
+                        else if (whiteToggle) {
                             if (board[r][c] != startWithWhiteToChar[c - j]) blackCaseCnt++;
                             if (board[r][c] != startWithBlackToChar[c - j]) whiteCaseCnt++;
                         }
@@ -61,7 +62,8 @@ public class 한규호_1018 {
                     if (minCnt > blackCaseCnt) {
                         minCnt = blackCaseCnt;
                     }
-                } else {
+                }
+                else {
                     if (minCnt > whiteCaseCnt) {
                         minCnt = whiteCaseCnt;
                     }
