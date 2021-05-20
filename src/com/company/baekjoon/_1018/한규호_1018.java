@@ -57,20 +57,10 @@ public class 한규호_1018 {
                     blackToggle = !blackToggle;
                     whiteToggle = !whiteToggle;
                 }
-
-                if (blackCaseCnt < whiteCaseCnt) {
-                    if (minCnt > blackCaseCnt) {
-                        minCnt = blackCaseCnt;
-                    }
-                }
-                else {
-                    if (minCnt > whiteCaseCnt) {
-                        minCnt = whiteCaseCnt;
-                    }
-                }
+                minCnt = Math.min((Math.min(blackCaseCnt, whiteCaseCnt)), minCnt);
             }
-
         }
+
         bw.write(String.valueOf(minCnt));
         bw.flush();
         bw.close();
