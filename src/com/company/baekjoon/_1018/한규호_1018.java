@@ -7,10 +7,10 @@ public class 한규호_1018 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String startWithBlack = "BWBWBWBW";
-        char[] startWithBlackToChar = startWithBlack.toCharArray();
-        String startWithWhite = "WBWBWBWB";
-        char[] startWithWhiteToChar = startWithWhite.toCharArray();
+        String startWithBlackPattern = "BWBWBWBW";
+        char[] startWithBlackArr = startWithBlackPattern.toCharArray();
+        String startWithWhitePattern = "WBWBWBWB";
+        char[] startWithWhiteArr = startWithWhitePattern.toCharArray();
         int minCnt = 2500; // 다시 칠해야 하는 정사각형의 최소 개수
         int chessWidth = 8; // 체스판의 가로 길이
         int chessHeight = 8; // 체스판의 세로 길이
@@ -35,27 +35,24 @@ public class 한규호_1018 {
                 int col = j + chessWidth;
                 int blackCaseCnt = 0;
                 int whiteCaseCnt = 0;
+                boolean blackAndWhiteToggle = true;
 
                 // 좌측 최상단의 칸이 검정색으로 시작하는 체스판일 경우와 하얀색으로 시작하는 체스판일 경우의
                 // 다시 칠해야하는 정사각형의 갯수 (blackCaseCnt, whiteCaseCnt) 를 따로 구해서 둘 중 작은 값을 최솟값으로 취한다.
                 // 각 케이스에서 구한 값 중 가장 작은 값이 답
 
-                boolean blackToggle = true;
-                boolean whiteToggle = false;
-
                 for (int r = i; r < row; r++) {
                     for (int c = j; c < col; c++) {
-                        if (blackToggle) {
-                            if (board[r][c] != startWithBlackToChar[c - j]) blackCaseCnt++;
-                            if (board[r][c] != startWithWhiteToChar[c - j]) whiteCaseCnt++;
+                        if (blackAndWhiteToggle) {
+                            if (board[r][c] != startWithBlackArr[c - j]) blackCaseCnt++;
+                            if (board[r][c] != startWithWhiteArr[c - j]) whiteCaseCnt++;
                         }
-                        else if (whiteToggle) {
-                            if (board[r][c] != startWithWhiteToChar[c - j]) blackCaseCnt++;
-                            if (board[r][c] != startWithBlackToChar[c - j]) whiteCaseCnt++;
+                        else {
+                            if (board[r][c] != startWithWhiteArr[c - j]) blackCaseCnt++;
+                            if (board[r][c] != startWithBlackArr[c - j]) whiteCaseCnt++;
                         }
                     }
-                    blackToggle = !blackToggle;
-                    whiteToggle = !whiteToggle;
+                    blackAndWhiteToggle = !blackAndWhiteToggle;
                 }
                 minCnt = Math.min((Math.min(blackCaseCnt, whiteCaseCnt)), minCnt);
             }
