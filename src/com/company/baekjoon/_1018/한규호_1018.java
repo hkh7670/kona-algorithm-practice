@@ -15,7 +15,7 @@ public class 한규호_1018 {
         String[] nm = br.readLine().split(" ");
         int n = Integer.parseInt(nm[0]);
         int m = Integer.parseInt(nm[1]);
-        int minCnt = 2500; // 다시 칠해야 하는 정사각형의 최수 개수
+        int minCnt = 2500; // 다시 칠해야 하는 정사각형의 최소 개수
 
         char[][] board = new char[n][m];
 
@@ -34,10 +34,14 @@ public class 한규호_1018 {
                 int blackCaseCnt = 0;
                 int whiteCaseCnt = 0;
 
-                // 첫번째 칸 : black
+                // 좌측 최상단의 칸이 검정색으로 시작하는 체스판일 경우와 하얀색으로 시작하는 체스판일 경우의
+                // 다시 칠해야하는 정사각형의 갯수를 따로 구해서 둘 중 작은 값을 최솟값으로 취한다.
+                // 각 케이스에서 구한 값 중 가장 작은 값이 답
+
                 boolean blackToggle = true;
                 boolean whiteToggle = false;
 
+                // 좌측 최상단 : black
                 for (int r = i; r < row; r++) {
                     for (int c = j; c < col; c++) {
                         if (blackToggle) {
@@ -52,7 +56,8 @@ public class 한규호_1018 {
 
                 blackToggle = false;
                 whiteToggle = true;
-                // 첫번째 칸 : white
+
+                // 좌측 최상단 : white
                 for (int r = i; r < row; r++) {
                     for (int c = j; c < col; c++) {
                         if (blackToggle) {
@@ -64,6 +69,7 @@ public class 한규호_1018 {
                     blackToggle = !blackToggle;
                     whiteToggle = !whiteToggle;
                 }
+
                 if (blackCaseCnt < whiteCaseCnt) {
                     if (minCnt > blackCaseCnt) {
                         minCnt = blackCaseCnt;
