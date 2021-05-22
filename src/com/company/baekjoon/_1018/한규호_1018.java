@@ -31,8 +31,8 @@ public class 한규호_1018 {
         }
 
         for (int i = 0; i <= n - chessHeight; i++) {
+            int row = i + chessHeight;
             for (int j = 0; j <= m - chessWidth; j++) {
-                int row = i + chessHeight;
                 int col = j + chessWidth;
                 int blackCaseCnt = 0; // 좌측 최상단의 칸이 검정색으로 시작하는 체스판일 경우의 다시 칠해야하는 정사각형의 갯수
                 int whiteCaseCnt = 0; // 좌측 최상단의 칸이 하얀색으로 시작하는 체스판일 경우의 다시 칠해야하는 정사각형의 갯수
