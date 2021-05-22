@@ -11,6 +11,7 @@ public class 한규호_1018 {
         char[] startWithBlackArr = startWithBlackPattern.toCharArray();
         String startWithWhitePattern = "WBWBWBWB";
         char[] startWithWhiteArr = startWithWhitePattern.toCharArray();
+
         int minCnt = 2500; // 다시 칠해야 하는 정사각형의 최소 개수
         int chessWidth = 8; // 체스판의 가로 길이
         int chessHeight = 8; // 체스판의 세로 길이
@@ -23,9 +24,9 @@ public class 한규호_1018 {
 
         for (int i = 0; i < n; i++) {
             String line = br.readLine();
-            int j = 0;
-            for (int lineIdx = 0; lineIdx < line.length(); lineIdx++) {
-                board[i][j++] = line.charAt(lineIdx);
+            int lineLength = line.length();
+            for (int lineIdx = 0; lineIdx < lineLength; lineIdx++) {
+                board[i][lineIdx] = line.charAt(lineIdx);
             }
         }
 
