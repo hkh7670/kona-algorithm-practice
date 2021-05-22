@@ -33,8 +33,8 @@ public class 한규호_1018 {
             for (int j = 0; j <= m - chessWidth; j++) {
                 int row = i + chessHeight;
                 int col = j + chessWidth;
-                int blackCaseCnt = 0;
-                int whiteCaseCnt = 0;
+                int blackCaseCnt = 0; // 좌측 최상단의 칸이 검정색으로 시작하는 체스판일 경우의 다시 칠해야하는 정사각형의 갯수
+                int whiteCaseCnt = 0; // 좌측 최상단의 칸이 하얀색으로 시작하는 체스판일 경우의 다시 칠해야하는 정사각형의 갯수
                 boolean blackAndWhiteToggle = true;
 
                 // 좌측 최상단의 칸이 검정색으로 시작하는 체스판일 경우와 하얀색으로 시작하는 체스판일 경우의
@@ -43,13 +43,14 @@ public class 한규호_1018 {
 
                 for (int r = i; r < row; r++) {
                     for (int c = j; c < col; c++) {
+                        int patternArrIdx = c - j;
                         if (blackAndWhiteToggle) {
-                            if (board[r][c] != startWithBlackArr[c - j]) blackCaseCnt++;
-                            if (board[r][c] != startWithWhiteArr[c - j]) whiteCaseCnt++;
+                            if (board[r][c] != startWithBlackArr[patternArrIdx]) blackCaseCnt++;
+                            if (board[r][c] != startWithWhiteArr[patternArrIdx]) whiteCaseCnt++;
                         }
                         else {
-                            if (board[r][c] != startWithWhiteArr[c - j]) blackCaseCnt++;
-                            if (board[r][c] != startWithBlackArr[c - j]) whiteCaseCnt++;
+                            if (board[r][c] != startWithWhiteArr[patternArrIdx]) blackCaseCnt++;
+                            if (board[r][c] != startWithBlackArr[patternArrIdx]) whiteCaseCnt++;
                         }
                     }
                     blackAndWhiteToggle = !blackAndWhiteToggle;
