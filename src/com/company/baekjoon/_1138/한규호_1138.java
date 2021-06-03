@@ -9,6 +9,7 @@ public class 한규호_1138 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
+
         int[] leftCntArr = Arrays.stream(br.readLine().split(" "))
                 .mapToInt(Integer::parseInt)
                 .toArray();
@@ -26,9 +27,8 @@ public class 한규호_1138 {
                 }
             }
         }
-
-        for (int i = 0; i < n; i++) {
-            bw.write(line[i] + " ");
+        for (int val : line) {
+            bw.write(val + " ");
             bw.flush();
         }
         bw.close();
