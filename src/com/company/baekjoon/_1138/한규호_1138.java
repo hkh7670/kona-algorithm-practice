@@ -18,9 +18,12 @@ public class 한규호_1138 {
 
         for (int leftIdx = 0; leftIdx < n; leftIdx++) {
             for (int lineIdx = 0; lineIdx < n; lineIdx++) {
-                if (leftCntArr[leftIdx] == 0 && line[lineIdx] == 0) {
-                    line[lineIdx] = leftIdx + 1;
-                    break;
+                if (leftCntArr[leftIdx] == 0) {
+                    if (line[lineIdx] == 0) {
+                        line[lineIdx] = leftIdx + 1;
+                        break;
+                    }
+                    else continue;
                 }
                 if (line[lineIdx] == 0) { // leftCntArr[leftIdx] 보다 작은 값이 자리를 잡지 않은 경우에만 차감
                     leftCntArr[leftIdx]--;
