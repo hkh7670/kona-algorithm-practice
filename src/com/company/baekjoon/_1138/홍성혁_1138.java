@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class È«¼ºÇõ_1138 {
+public class í™ì„±í˜_1138 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		/*
 		 * 4
 		 * 2 1 1 0
-		 * ¿ŞÂÊºÎÅÍ 0ÀÇ °³¼ö¸¦ »õ¼­ ÀÚ¸® ÆÇ´Ü
+		 * ì™¼ìª½ë¶€í„° 0ì˜ ê°œìˆ˜ë¥¼ ìƒˆì„œ ìë¦¬ íŒë‹¨
 		 */
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -34,7 +34,7 @@ public class È«¼ºÇõ_1138 {
 						result[j] = i;
 						
 					}
-					//´Ù¸¥°ªÀÌ ÀÌ¹Ì µé¾î°¡ ÀÖ´Â °æ¿ì ´ÙÀ½ ºóÄ­¿¡ ÀÔ·Â
+					//ë‹¤ë¥¸ê°’ì´ ì´ë¯¸ ë“¤ì–´ê°€ ìˆëŠ” ê²½ìš° ë‹¤ìŒ ë¹ˆì¹¸ì— ì…ë ¥
 					else {
 						for(int k = j+1 ; k <= count ; k++) {
 							if(result[k] == 0) {
