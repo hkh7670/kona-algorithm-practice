@@ -11,7 +11,7 @@ public class 한규호_1002 {
 
         int t = Integer.parseInt(br.readLine());
 
-        for (int i = 0; i < t; i++) {
+        while (t-- > 0) {
             String[] xyr = br.readLine().split(" ");
             x1 = Integer.parseInt(xyr[0]);
             y1 = Integer.parseInt(xyr[1]);
@@ -28,22 +28,20 @@ public class 한규호_1002 {
     }
 
     public static int getCoordinatesCnt(int x1, int y1, int r1, int x2, int y2, int r2) {
-        if (x1 == x2 && y1 == y2 && r1 == r2) {
+        if (x1 == x2 && y1 == y2 && r1 == r2) { // 접점이 무수히 많은 경우 (두 원이 같은 원)
             return -1;
         }
-        int cnt;
-        int radiusDiff = r1 > r2 ? r1 - r2 : r2 - r1;
-        int radiusSum = r1 + r2;
-        double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        if (distance < radiusSum && distance > radiusDiff) {
-            cnt = 2;
+        int radiusDiff = r1 > r2 ? r1 - r2 : r2 - r1; // 두 원의 반지름의 차 (양수)
+        int radiusSum = r1 + r2; // 두 원의 반지름의 합
+        double distance = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)); // 두 원의 중심 사이의 거리
+        if (distance < radiusSum && distance > radiusDiff) { // 두 원의 접점이 2개인 경우
+            return 2;
         }
-        else if (distance == radiusSum || distance == radiusDiff) {
-            cnt = 1;
+        else if (distance == radiusSum || distance == radiusDiff) { // 두 원의 접점이 1개인 경우
+            return 1;
         }
-        else {
-            cnt = 0;
+        else { // 접점이 없는 경우
+            return 0;
         }
-        return cnt;
     }
 }
