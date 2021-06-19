@@ -7,9 +7,9 @@ public class 한규호_1002 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
-        int x1, y1, r1, x2, y2, r2;
+        int x1, y1, r1, x2, y2, r2, cnt, t;
 
-        int t = Integer.parseInt(br.readLine());
+        t = Integer.parseInt(br.readLine());
 
         while (t-- > 0) {
             String[] xyr = br.readLine().split(" ");
@@ -19,7 +19,8 @@ public class 한규호_1002 {
             x2 = Integer.parseInt(xyr[3]);
             y2 = Integer.parseInt(xyr[4]);
             r2 = Integer.parseInt(xyr[5]);
-            sb.append(getCoordinatesCnt(x1, y1, r1, x2, y2, r2)).append("\n");
+            cnt = getCoordinatesCnt(x1, y1, r1, x2, y2, r2); // 좌표의 갯수를 구하는 함수
+            sb.append(cnt).append("\n");
         }
 
         bw.write(sb.toString());
