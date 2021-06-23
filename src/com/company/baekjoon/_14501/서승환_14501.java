@@ -25,8 +25,6 @@ public class 서승환_14501 {
         int[] P =new int[N+2];
         for(int i=1; i<= N; i++){
             int[] numbers = Arrays.asList(br.readLine().split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-            System.out.println(numbers[0]);
-            System.out.println(numbers[1]);
             L[i] = numbers[0];
             P[i] = numbers[1];
         }
