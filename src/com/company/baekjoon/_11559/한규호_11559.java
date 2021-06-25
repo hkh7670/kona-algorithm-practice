@@ -2,6 +2,28 @@ package com.company.baekjoon._11559;
 
 import java.io.*;
 
+/*
+
+-- Test Case --
+
+Y...YR
+B.RGGY
+R.GGYY
+G.RYGR
+YGYGRR
+YBRYGY
+RRYYGY
+YYRBRB
+YRBGBB
+GBRBGR
+GBRBGR
+GBRBGR
+
+answer: 14
+
+*/
+
+
 public class 한규호_11559 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
