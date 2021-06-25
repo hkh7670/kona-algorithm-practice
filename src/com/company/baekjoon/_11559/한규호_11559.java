@@ -28,9 +28,9 @@ public class 한규호_11559 {
                 for (int j = 0; j < col; j++) {
                     if (visit[i][j] == 0 && field[i][j] != '.') {
                         char item = field[i][j];
-                        dfs(i, j, field[i][j]);
+                        dfs(i, j, item);
                         if (puyoCnt >= 4) { // 인접 뿌요가 4개 이상 잡히면 뿌요 터짐 발생 -> 점으로 치환
-                            explode(item);
+                            explode();
                             isExplode = true;
                         }
                     }
@@ -72,10 +72,10 @@ public class 한규호_11559 {
         }
     }
 
-    public static void explode(char item) {
+    public static void explode() {
         for (int x = 0; x < row; x++) {
             for (int y = 0; y < col; y++) {
-                if (visit[x][y] == 1 && field[x][y] == item) {
+                if (visit[x][y] == 1) {
                     field[x][y] = '.';
                 }
             }
