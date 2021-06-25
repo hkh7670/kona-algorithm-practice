@@ -53,6 +53,8 @@ public class 한규호_11559 {
                         dfs(i, j, item);
                         if (puyoCnt >= 4) { // 인접 뿌요가 4개 이상 잡히면 뿌요 터짐 발생 -> 점으로 치환
                             explode();
+                            bw.write("\n---explode---\n");
+                            print2ndArr(field);
                             isExplode = true;
                         }
                     }
@@ -63,7 +65,8 @@ public class 한규호_11559 {
 
             if (isExplode) { // 뿌요 터짐 발생 시 공중에 떠있는 뿌요들을 밑으로 내려주고 연쇄카운트 증가
                 toGround();
-//                print2ndArr(field);
+                bw.write("\n---toGround---\n");
+                print2ndArr(field);
                 result++;
                 isExplode = false;
             }
@@ -119,7 +122,6 @@ public class 한규호_11559 {
     }
 
     public static void print2ndArr(char[][] arr) throws IOException {
-        bw.write("\n\n");
         int row = arr.length;
         int col = arr[0].length;
         for (int i = 0; i < row; i++) {
@@ -128,10 +130,10 @@ public class 한규호_11559 {
             }
             bw.write("\n");
         }
+        bw.write("\n");
     }
 
     public static void print2ndArr(int[][] arr) throws IOException {
-        bw.write("\n\n");
         int row = arr.length;
         int col = arr[0].length;
         for (int i = 0; i < row; i++) {
@@ -140,5 +142,6 @@ public class 한규호_11559 {
             }
             bw.write("\n");
         }
+        bw.write("\n");
     }
 }
