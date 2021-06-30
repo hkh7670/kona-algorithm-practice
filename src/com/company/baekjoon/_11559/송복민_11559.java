@@ -106,7 +106,6 @@ public class 송복민_11559 {
 		}
 	}
 
-
 	private static boolean safe(int y, int x) {
 		if(y>=0&&y<12&&x>=0&&x<6) return true;
 		else return false;
