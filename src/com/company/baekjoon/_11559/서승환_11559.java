@@ -11,6 +11,7 @@ import java.util.Queue;
 
 
 public class 서승환_11559 {
+	static String test;
     static char[][] map = new char[12][6];
     static boolean[][] check = new boolean[12][6];
     static int[][] dXY = {{-1,0},{1,0},{0,-1},{0,1}};
