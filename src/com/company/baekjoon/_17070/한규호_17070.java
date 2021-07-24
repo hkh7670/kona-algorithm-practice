@@ -12,26 +12,6 @@ public class 한규호_17070 {
     static final int diagonal = 3; // 대각선
     static int position;
 
-    public static class Location {
-        int x;
-        int y;
-
-        public Location(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    public static class Pipe {
-        Location front; // 파이프 앞쪽 좌표
-        Location rear; // 파이프 뒷쪽 좌표
-
-        public Pipe(Location rear, Location front) {
-            this.front = front;
-            this.rear = rear;
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -44,46 +24,44 @@ public class 한규호_17070 {
                 map[i][j] = Integer.parseInt(line[j]);
             }
         }
-        Pipe p = new Pipe(new Location(0, 0), new Location(0, 1));
-        dfs(p);
-
+        dfs(0, 0, 0, 1);
         bw.write(Integer.toString(result));
         bw.close();
         br.close();
     }
 
-    public static void dfs(Pipe p) {
-        if (p.front.x == n - 1 && p.front.y == n - 1) {
+    public static void dfs(int rearX, int rearY, int frontX, int frontY) {
+        if (frontX == n - 1 && frontY == n - 1) {
             result++;
             return;
         }
-        position = getPosition(p);
+        position = getPosition(rearX, rearY, frontX, frontY);
         switch (position) {
             case horizontal:
-                if (checkHorizontal(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x, p.front.y + 1)));
+                if (checkHorizontal(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX, frontY + 1);
                 }
-                if (checkDiagonal(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x + 1, p.front.y + 1)));
+                if (checkDiagonal(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX + 1, frontY + 1);
                 }
                 break;
             case vertical:
-                if (checkVertical(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x + 1, p.front.y)));
+                if (checkVertical(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX + 1, frontY);
                 }
-                if (checkDiagonal(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x + 1, p.front.y + 1)));
+                if (checkDiagonal(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX + 1, frontY + 1);
                 }
                 break;
             case diagonal:
-                if (checkHorizontal(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x, p.front.y + 1)));
+                if (checkHorizontal(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX, frontY + 1);
                 }
-                if (checkVertical(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x + 1, p.front.y)));
+                if (checkVertical(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX + 1, frontY);
                 }
-                if (checkDiagonal(p)) {
-                    dfs(new Pipe(new Location(p.front.x, p.front.y), new Location(p.front.x + 1, p.front.y + 1)));
+                if (checkDiagonal(frontX, frontY)) {
+                    dfs(frontX, frontY, frontX + 1, frontY + 1);
                 }
                 break;
             default:
@@ -91,11 +69,11 @@ public class 한규호_17070 {
         }
     }
 
-    public static int getPosition(Pipe p) {
-        if (p.front.x == p.rear.x && p.front.y - 1 == p.rear.y) {
+    public static int getPosition(int rearX, int rearY, int frontX, int frontY) {
+        if (frontX == rearX && frontY - 1 == rearY) {
             return horizontal;
         }
-        else if (p.front.y == p.rear.y && p.front.x - 1 == p.rear.x) {
+        else if (frontY == rearY && frontX - 1 == rearX) {
             return vertical;
         }
         else {
@@ -103,27 +81,23 @@ public class 한규호_17070 {
         }
     }
 
-    public static boolean checkHorizontal(Pipe p) {
-        if (p.front.y + 1 <= n - 1) {
-            return map[p.front.x][p.front.y + 1] != 1;
+    public static boolean checkHorizontal(int frontX, int frontY) {
+        if (frontY + 1 < n) {
+            return map[frontX][frontY + 1] != 1;
         }
         return false;
     }
 
-    public static boolean checkVertical(Pipe p) {
-        if (p.front.x + 1 <= n - 1) {
-            return map[p.front.x + 1][p.front.y] != 1;
+    public static boolean checkVertical(int frontX, int frontY) {
+        if (frontX + 1 < n) {
+            return map[frontX + 1][frontY] != 1;
         }
         return false;
     }
 
-    public static boolean checkDiagonal(Pipe p) {
-        if (p.front.y + 1 <= n - 1
-                && p.front.x + 1 <= n - 1
-        ) {
-            return map[p.front.x][p.front.y + 1] != 1
-                    && map[p.front.x + 1][p.front.y + 1] != 1
-                    && map[p.front.x + 1][p.front.y] != 1;
+    public static boolean checkDiagonal(int frontX, int frontY) {
+        if (frontY + 1 < n && frontX + 1 < n) {
+            return map[frontX][frontY + 1] != 1 && map[frontX + 1][frontY + 1] != 1 && map[frontX + 1][frontY] != 1;
         }
         return false;
     }
