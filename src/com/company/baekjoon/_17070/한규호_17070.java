@@ -41,16 +41,10 @@ public class 한규호_17070 {
                 if (checkHorizontal(frontX, frontY)) {
                     dfs(frontX, frontY, frontX, frontY + 1);
                 }
-                if (checkDiagonal(frontX, frontY)) {
-                    dfs(frontX, frontY, frontX + 1, frontY + 1);
-                }
                 break;
             case vertical:
                 if (checkVertical(frontX, frontY)) {
                     dfs(frontX, frontY, frontX + 1, frontY);
-                }
-                if (checkDiagonal(frontX, frontY)) {
-                    dfs(frontX, frontY, frontX + 1, frontY + 1);
                 }
                 break;
             case diagonal:
@@ -60,12 +54,12 @@ public class 한규호_17070 {
                 if (checkVertical(frontX, frontY)) {
                     dfs(frontX, frontY, frontX + 1, frontY);
                 }
-                if (checkDiagonal(frontX, frontY)) {
-                    dfs(frontX, frontY, frontX + 1, frontY + 1);
-                }
                 break;
             default:
                 break;
+        }
+        if (checkDiagonal(frontX, frontY)) {
+            dfs(frontX, frontY, frontX + 1, frontY + 1);
         }
     }
 
@@ -82,23 +76,20 @@ public class 한규호_17070 {
     }
 
     public static boolean checkHorizontal(int frontX, int frontY) {
-        if (frontY + 1 < n) {
-            return map[frontX][frontY + 1] != 1;
-        }
-        return false;
+        return frontY + 1 < n
+                && map[frontX][frontY + 1] != 1;
     }
 
     public static boolean checkVertical(int frontX, int frontY) {
-        if (frontX + 1 < n) {
-            return map[frontX + 1][frontY] != 1;
-        }
-        return false;
+        return frontX + 1 < n
+                && map[frontX + 1][frontY] != 1;
     }
 
     public static boolean checkDiagonal(int frontX, int frontY) {
-        if (frontY + 1 < n && frontX + 1 < n) {
-            return map[frontX][frontY + 1] != 1 && map[frontX + 1][frontY + 1] != 1 && map[frontX + 1][frontY] != 1;
-        }
-        return false;
+        return frontY + 1 < n
+                && frontX + 1 < n
+                && map[frontX][frontY + 1] != 1
+                && map[frontX + 1][frontY + 1] != 1
+                && map[frontX + 1][frontY] != 1;
     }
 }
