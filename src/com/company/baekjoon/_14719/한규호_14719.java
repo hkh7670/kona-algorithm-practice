@@ -26,7 +26,7 @@ public class 한규호_14719 {
             int startIdx = -1; // 각 row 의 가장 왼쪽 끝(startIdx)에 있는 블록의 위치를 지정
             int endIdx = -1; // 각 row 의 가장 오른쪽 끝(endIdx)에 있는 블록의 위치를 지정
             for (int j = 0; j < col; j++) {
-                if (map[i][j] == 1 && startIdx == -1) {
+                if (map[i][j] == 1 && startIdx == -1 && j + 1 <= col - 1 && map[i][j + 1] != 1) {
                     startIdx = j;
                 }
                 if (map[i][j] == 1 && startIdx != -1) {
@@ -37,7 +37,7 @@ public class 한규호_14719 {
                 for (int c = startIdx + 1; c < endIdx; c++) {
                     if (map[r][c] == 0) {
                         result++;
-                        map[r][c] = 2;
+                        map[r][c] = 1;
                     }
                 }
             }
