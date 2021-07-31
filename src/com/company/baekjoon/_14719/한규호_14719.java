@@ -42,6 +42,7 @@ public class 한규호_14719 {
                 map[j][i] = 1;
             }
         }
+        long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
 
         for (int i = 0; i < row; i++) {
             int startIdx = -1; // 각 row 의 가장 왼쪽 끝(startIdx)에 있는 블록의 위치를 지정
@@ -65,7 +66,10 @@ public class 한규호_14719 {
                 }
             }
         }
+        long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+        long diffTime = afterTime - beforeTime; //두 시간의 차 계산
         bw.write(Integer.toString(result));
+        bw.write("\nRunning Time : " + diffTime + "ms");
         bw.close();
         br.close();
     }
