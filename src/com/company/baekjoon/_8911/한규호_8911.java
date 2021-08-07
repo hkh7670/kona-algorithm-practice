@@ -11,8 +11,8 @@ public class 한규호_8911 {
     static int maxX;
     static int minY;
     static int maxY;
-    static int curX;
-    static int curY;
+    static int curX; // 현재 x 좌표
+    static int curY; // 현재 y 좌표
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
