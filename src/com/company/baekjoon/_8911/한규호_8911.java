@@ -7,12 +7,12 @@ public class 한규호_8911 {
     static final int south = 2;
     static final int east = 3;
     static final int west = 4;
-    static int minX = 0;
-    static int maxX = 0;
-    static int minY = 0;
-    static int maxY = 0;
-    static int curX = 0;
-    static int curY = 0;
+    static int minX;
+    static int maxX;
+    static int minY;
+    static int maxY;
+    static int curX;
+    static int curY;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,20 +35,16 @@ public class 한규호_8911 {
         int direction = north;
         int testCaseLength = testCase.length();
         for (int i = 0; i < testCaseLength; i++) {
-            switch (testCase.charAt(i)) {
+            char c = testCase.charAt(i);
+            switch (c) {
                 case 'F':
-                    setCurrentPosition(direction, 'F');
-                    getMinMaxXY();
-                    break;
                 case 'B':
-                    setCurrentPosition(direction, 'B');
+                    setCurrentPosition(direction, c);
                     getMinMaxXY();
                     break;
                 case 'L':
-                    direction = getDirection(direction, 'L');
-                    break;
                 case 'R':
-                    direction = getDirection(direction, 'R');
+                    direction = getDirection(direction, c);
                     break;
                 default:
                     break;
