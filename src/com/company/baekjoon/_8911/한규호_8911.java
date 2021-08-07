@@ -3,10 +3,17 @@ package com.company.baekjoon._8911;
 import java.io.*;
 
 public class 한규호_8911 {
-    static final int north = 1;
-    static final int south = 2;
-    static final int east = 3;
-    static final int west = 4;
+
+    static final int NORTH = 1;
+    static final int SOUTH = 2;
+    static final int EAST = 3;
+    static final int WEST = 4;
+
+    static final char FORWARD = 'F'; // 전진
+    static final char BACKWARD = 'B'; // 후진
+    static final char LEFT = 'L'; // 왼쪽 회전
+    static final char RIGHT = 'R'; // 오른쪽 회전
+
     static int minX;
     static int maxX;
     static int minY;
@@ -32,16 +39,16 @@ public class 한규호_8911 {
 
     public static int getMinimumArea(String testCase) {
         setToZero();
-        int direction = north;
+        int direction = NORTH;
         for (char c : testCase.toCharArray()) {
             switch (c) {
-                case 'F':
-                case 'B':
+                case FORWARD:
+                case BACKWARD:
                     setCurrentPosition(direction, c);
                     getMinMaxXY();
                     break;
-                case 'L':
-                case 'R':
+                case LEFT:
+                case RIGHT:
                     direction = getDirection(direction, c);
                     break;
                 default:
@@ -68,14 +75,14 @@ public class 한규호_8911 {
     }
 
     public static void setCurrentPosition(int direction, char moveType) {
-        if (moveType == 'F') {
-            if (direction == north) {
+        if (moveType == FORWARD) {
+            if (direction == NORTH) {
                 curY++;
             }
-            else if (direction == south) {
+            else if (direction == SOUTH) {
                 curY--;
             }
-            else if (direction == east) {
+            else if (direction == EAST) {
                 curX++;
             }
             else {
@@ -83,13 +90,13 @@ public class 한규호_8911 {
             }
         }
         else {
-            if (direction == north) {
+            if (direction == NORTH) {
                 curY--;
             }
-            else if (direction == south) {
+            else if (direction == SOUTH) {
                 curY++;
             }
-            else if (direction == east) {
+            else if (direction == EAST) {
                 curX--;
             }
             else {
@@ -99,32 +106,32 @@ public class 한규호_8911 {
     }
 
     public static int getDirection(int direction, char rotationDir) {
-        if (rotationDir == 'L') {
-            if (direction == north) {
-                return west;
+        if (rotationDir == LEFT) {
+            if (direction == NORTH) {
+                return WEST;
             }
-            else if (direction == south) {
-                return east;
+            else if (direction == SOUTH) {
+                return EAST;
             }
-            else if (direction == east) {
-                return north;
+            else if (direction == EAST) {
+                return NORTH;
             }
             else {
-                return south;
+                return SOUTH;
             }
         }
         else {
-            if (direction == north) {
-                return east;
+            if (direction == NORTH) {
+                return EAST;
             }
-            else if (direction == south) {
-                return west;
+            else if (direction == SOUTH) {
+                return WEST;
             }
-            else if (direction == east) {
-                return south;
+            else if (direction == EAST) {
+                return SOUTH;
             }
             else {
-                return north;
+                return NORTH;
             }
         }
     }
