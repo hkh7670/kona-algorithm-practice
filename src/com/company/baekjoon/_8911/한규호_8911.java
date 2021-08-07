@@ -1,7 +1,137 @@
 package com.company.baekjoon._8911;
 
-public class 한규호_8911 {
-    public static void main(String[] args) {
+import java.io.*;
 
+public class 한규호_8911 {
+    static final int north = 1;
+    static final int south = 2;
+    static final int east = 3;
+    static final int west = 4;
+    static int minX = 0;
+    static int maxX = 0;
+    static int minY = 0;
+    static int maxY = 0;
+    static int curX = 0;
+    static int curY = 0;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int minArea;
+        int t = Integer.parseInt(br.readLine());
+
+        while (t-- > 0) {
+            String testCase = br.readLine();
+            minArea = getMinimumArea(testCase);
+            bw.write(minArea + "\n");
+        }
+        bw.close();
+        br.close();
+    }
+
+    public static int getMinimumArea(String testCase) {
+        setToZero();
+        int direction = north;
+        int testCaseLength = testCase.length();
+        for (int i = 0; i < testCaseLength; i++) {
+            switch (testCase.charAt(i)) {
+                case 'F':
+                    setCurrentPosition(direction, 'F');
+                    getMinMaxXY();
+                    break;
+                case 'B':
+                    setCurrentPosition(direction, 'B');
+                    getMinMaxXY();
+                    break;
+                case 'L':
+                    direction = getDirection(direction, 'L');
+                    break;
+                case 'R':
+                    direction = getDirection(direction, 'R');
+                    break;
+                default:
+                    break;
+            }
+        }
+        return (maxX - minX) * (maxY - minY);
+    }
+
+    public static void setToZero() {
+        minX = 0;
+        minY = 0;
+        maxX = 0;
+        maxY = 0;
+        curX = 0;
+        curY = 0;
+    }
+
+    public static void getMinMaxXY() {
+        minX = Math.min(minX, curX);
+        maxX = Math.max(maxX, curX);
+        minY = Math.min(minY, curY);
+        maxY = Math.max(maxY, curY);
+    }
+
+    public static void setCurrentPosition(int direction, char moveType) {
+        if (moveType == 'F') {
+            if (direction == north) {
+                curY++;
+            }
+            else if (direction == south) {
+                curY--;
+            }
+            else if (direction == east) {
+                curX++;
+            }
+            else {
+                curX--;
+            }
+        }
+        else {
+            if (direction == north) {
+                curY--;
+            }
+            else if (direction == south) {
+                curY++;
+            }
+            else if (direction == east) {
+                curX--;
+            }
+            else {
+                curX++;
+            }
+        }
+    }
+
+    public static int getDirection(int direction, char rotationDir) {
+        if (rotationDir == 'L') {
+            if (direction == north) {
+                return west;
+            }
+            else if (direction == south) {
+                return east;
+            }
+            else if (direction == east) {
+                return north;
+            }
+            else {
+                return south;
+            }
+        }
+        else {
+            if (direction == north) {
+                return east;
+            }
+            else if (direction == south) {
+                return west;
+            }
+            else if (direction == east) {
+                return south;
+            }
+            else {
+                return north;
+            }
+        }
     }
 }
