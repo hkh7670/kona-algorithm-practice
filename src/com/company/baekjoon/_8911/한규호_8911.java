@@ -45,7 +45,7 @@ public class 한규호_8911 {
                 case FORWARD:
                 case BACKWARD:
                     setCurrentPosition(direction, c);
-                    getMinMaxXY();
+                    setMinMaxXY();
                     break;
                 case LEFT:
                 case RIGHT:
@@ -67,7 +67,7 @@ public class 한규호_8911 {
         curY = 0;
     }
 
-    public static void getMinMaxXY() {
+    public static void setMinMaxXY() {
         minX = Math.min(minX, curX);
         maxX = Math.max(maxX, curX);
         minY = Math.min(minY, curY);
