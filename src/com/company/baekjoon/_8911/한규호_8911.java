@@ -33,9 +33,7 @@ public class 한규호_8911 {
     public static int getMinimumArea(String testCase) {
         setToZero();
         int direction = north;
-        int testCaseLength = testCase.length();
-        for (int i = 0; i < testCaseLength; i++) {
-            char c = testCase.charAt(i);
+        for (char c : testCase.toCharArray()) {
             switch (c) {
                 case 'F':
                 case 'B':
