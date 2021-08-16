@@ -9,8 +9,6 @@ public class 한규호_2493 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         Stack<Integer> heightStack = new Stack<>();
         Stack<Integer> indexStack = new Stack<>();
-        StringBuilder sb = new StringBuilder();
-
         int n = Integer.parseInt(br.readLine());
 
         int[] topHeight = new int[n];
@@ -18,32 +16,26 @@ public class 한규호_2493 {
         for (int i = 0; i < n; i++) {
             topHeight[i] = Integer.parseInt(heights[i]);
         }
-        heightStack.add(topHeight[0]);
-        indexStack.add(0);
-        sb.append(0).append(" ");
-        int heightArrIdx = 0;
-        int stackIdx = 0;
+        heightStack.push(topHeight[0]);
+        indexStack.push(0);
+        bw.write(0 + " ");
 
-        while (stackIdx < n) {
+        for (int i = 1; i < n; i++) {
             while (!heightStack.isEmpty()) {
-                if (heightStack.peek() > topHeight[heightArrIdx]) {
-                    sb.append(indexStack.peek() + 1).append(" ");
+                if (heightStack.peek() > topHeight[i]) {
+                    bw.write(indexStack.peek() + 1 + " ");
                     break;
-//                heightStack.pop();
-//                heightStack.add(topHeight[heightArrIdx]);
-//                indexStack.add(stackIdx);
-//                sb.append(stackIdx + 1).append(" ");
                 }
                 heightStack.pop();
                 indexStack.pop();
             }
-            heightStack.push(topHeight[heightArrIdx]);
-            indexStack.push(stackIdx);
-            heightArrIdx++;
-            stackIdx++;
+            if (heightStack.isEmpty()) {
+                bw.write(0 + " ");
+            }
+            heightStack.push(topHeight[i]);
+            indexStack.push(i);
         }
 
-        bw.write(sb.toString());
         bw.close();
         br.close();
 
