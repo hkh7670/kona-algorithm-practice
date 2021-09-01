@@ -14,8 +14,9 @@ public class 한규호_2504 {
         int result = 0; // 최종 결과
         int temp = 1; // 계산값을 임시로 저장하기위한 변수
         char prevChar = 0; // 이전 loop의 기호
+        int strLength = str.length();
 
-        for (int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < strLength; i++) {
             char c = str.charAt(i);
 
             // Case 1: 여는 괄호가 나올 때? -> 각 케이스에 맞게 계산 후 여는 괄호는 스택에 push
