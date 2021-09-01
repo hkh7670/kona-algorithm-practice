@@ -68,7 +68,7 @@ public class 한규호_2504 {
             }
             prevChar = c;
         }
-        if (!stack.isEmpty()) { // 스택이 비어있지 않은 경우? -> 여는괄호와 닫는괄호의 갯수가 다르거나 매치가 되지 않는 경우 -> 입력이 올바르지 못한 경우
+        if (temp != 1) { // 여는괄호와 닫는괄호의 갯수가 다르거나 매치가 되지 않는 경우 -> 입력이 올바르지 못한 경우
             result = 0;
         }
         bw.write(Integer.toString(result));
