@@ -21,12 +21,12 @@ public class 한규호_2504 {
 
             // Case 1: 여는 괄호가 나올 때? -> 각 케이스에 맞게 계산 후 여는 괄호는 스택에 push
             if (c == '(') {
-                stack.push(str.charAt(i));
+                stack.push(c);
                 temp *= 2;
             }
 
             else if (c == '[') {
-                stack.push(str.charAt(i));
+                stack.push(c);
                 temp *= 3;
             }
 
